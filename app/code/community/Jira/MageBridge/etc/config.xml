@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento Bridge
+ *
+ * @author Yireo
+ * @package Magento Bridge
+ * @copyright Copyright 2009
+ * @license Yireo EULA (www.yireo.com)
+ * @link http://www.yireo.com
+ */
+-->
+<config>
+
+    <modules>
+        <Jira_MageBridge>
+            <version>1.0 build 1</version>
+        </Jira_MageBridge>
+    </modules>
+
+    <global>
+
+        <blocks>
+            <magebridge>
+                <class>Jira_MageBridge_Block</class>
+            </magebridge>
+        </blocks>
+
+        <helpers>
+            <magebridge>
+                <class>Jira_MageBridge_Helper</class>
+            </magebridge>
+        </helpers>
+
+        <models>
+            <magebridge>
+                <class>Jira_MageBridge_Model</class>
+            </magebridge>
+        </models>
+
+	</global>
+
+    <admin>
+        <routers>
+            <magebridge>
+                <use>admin</use>
+                <args>
+                    <module>Jira_MageBridge</module>
+                    <frontName>magebridge</frontName>
+                </args>
+            </magebridge>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Jira_MageBridge>
+                    <files>
+                        <default>Jira_MageBridge.csv</default>
+                    </files>
+                </Jira_MageBridge>
+            </modules>
+        </translate>
+        <menu>
+             <cms>
+                <children>
+                    <magebridge translate="title" module="magebridge">
+                        <title>MageBridge Installer</title>
+                        <action>magebridge/index</action>
+                    </magebridge>
+                </children>
+             </cms>
+        </menu>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <magebridge translate="title" module="magebridge">
+                                            <title>Jira MageBridge</title>
+                                        </magebridge>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+</config>

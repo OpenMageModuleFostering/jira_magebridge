@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Jira_MageBridge</name>
+    <version>1.0</version>
+    <stability>stable</stability>
+    <license uri="http://www.yireo.com/">MageBridge EULA</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>This module integrates Magento with Joomla!</summary>
+    <description>This module integrates Magento with Joomla!</description>
+    <notes>This PEAR package can only be distributed with a valid MageBridge license.</notes>
+    <authors><author><name>Jisse Reitsma</name><user>auto-converted</user><email>info@jira.nl</email></author></authors>
+    <date>2009-05-26</date>
+    <time>10:38:57</time>
+    <contents><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="magebridge"><file name="license.phtml" hash="7f87df8053557e777a9c6c733eb8aef0"/><file name="menu.phtml" hash="3524d7e9dcc64cc2b17881a5ca9b335c"/><file name="settings.phtml" hash="4daaee62f56eebb827761d895631875a"/><file name="updates.phtml" hash="3b7b1cc50087b0a4cceb4a2ef4b74857"/></dir></dir></dir></dir></dir></target><target name="magecommunity"><dir name="Jira"><dir name="MageBridge"><dir name="controllers"><file name="IndexController.php" hash="5dd7282102589a9950312a1235ff8bd2"/></dir><dir name="Block"><file name="License.php" hash="f7b55c605964dcbaf8fd74c606c9d4e9"/><file name="Menu.php" hash="2f3675cb4f4c2406e97cde577ac855ca"/><file name="Settings.php" hash="d50bfe4a62931764c70747b47c8d234d"/><file name="Updates.php" hash="2e5cfea03dbe0cbc1b08ed09d91fb2f2"/></dir><dir name="etc"><file name="config.xml" hash="b99735780681d7fa0105c184b8575b6f"/><file name="system.xml" hash="fd6013af4f857472a4be5a72ebe6ffc0"/></dir><dir name="Helper"><file name="Data.php" hash="25b3a5b0ff8841c9e655680a7b6eafec"/></dir><dir name="Model"><file name="Update.php" hash="77ffc4c8c400832e604a7fba993f6030"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Jira_MageBridge.xml" hash="c572b0ef802d01dbb221a7a61b5fae21"/></dir></target></contents>
+    <compatible/>
+    <dependencies/>
+</package>

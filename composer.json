@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Jira_MageBridge",
+    "type": "magento-module",
+    "license": "MageBridge-EULA",
+    "homepage": "",
+    "description": "This module integrates Magento with Joomla!",
+    "authors": [
+    {
+        "name": "Jisse Reitsma",
+        "email": "info@jira.nl"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

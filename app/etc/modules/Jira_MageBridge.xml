@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MageBridge-module for Magento 
+ *
+ * @category    design_default
+ * @package     Jira_MageBridge
+ * @author      Jisse Reitsma (Jira ICT)
+ * @copyright   Copyright (c) 2009 Jira ICT (http://www.jira.nl/)
+ * @license     Open Software License
+ */
+-->
+<config>
+    <modules>
+        <Jira_MageBridge>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Jira_MageBridge>
+    </modules>
+</config>
