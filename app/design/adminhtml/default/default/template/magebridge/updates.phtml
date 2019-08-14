@@ -49,8 +49,12 @@ div#mbajax-updater {
                 <td><?php echo $this->getCurrentVersion(); ?></td>
             </tr>-->
             <tr>
+                <?php $newversion = $this->getNewVersion(); if(preg_match('/^ERROR/', $newversion)) { ?>
+                <td colspan="2" id="mbajax-version"><?php echo $newversion; ?></td>
+                <?php } else { ?>
                 <td><?php echo $this->__('Full version'); ?></td>
-                <td><span id="mbajax-version"><?php echo $this->getNewVersion(); ?></span></td>
+                <td><span id="mbajax-version"><?php echo $newversion; ?></span></td>
+                <?php } ?>
             </tr>
         </table>
         </div>

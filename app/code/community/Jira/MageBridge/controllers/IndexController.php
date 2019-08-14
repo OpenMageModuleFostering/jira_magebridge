@@ -82,6 +82,7 @@ class Jira_MageBridge_IndexController extends Mage_Adminhtml_Controller_Action
             $data['license_key'] = trim($data['license_key']);
             Mage::getConfig()->saveConfig('magebridge/settings/license_key', $data['license_key']);
             Mage::getConfig()->removeCache();
+            Mage::getModel('core/session')->addSuccess('Settings saved');
             
         }
 

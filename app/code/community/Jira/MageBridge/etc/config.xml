@@ -14,7 +14,7 @@
 
     <modules>
         <Jira_MageBridge>
-            <version>1.0 build 1</version>
+            <version>1.0.2</version>
         </Jira_MageBridge>
     </modules>
 
