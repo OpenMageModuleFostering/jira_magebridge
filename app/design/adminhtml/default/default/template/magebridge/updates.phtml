@@ -29,7 +29,14 @@ div#mbajax-updater {
 <div class="content-header">
 <table cellspacing="0">
 	<tr>
-		<td style="width:80%;"><h3 class="icon-head head-tag"><?php echo $this->getHeader('Update'); ?></h3></td>
+		<td style="width:40%;"><h3 class="icon-head head-tag"><?php echo $this->getHeader('Update'); ?></h3></td>
+        <td class="formbuttons" align="right">
+            <?php if($this->upgradeNeeded() == true) { ?> 
+            <button type="button" class="scalable" onclick="doUpdate();"><span><?php echo $this->__('Update MageBridge extension'); ?></span></button>
+            <?php } else { ?>
+            <?php echo $this->__('No update needed'); ?>
+            <?php } ?>
+        </td>
 	</tr>
 </table>
 </div>
@@ -41,31 +48,22 @@ div#mbajax-updater {
     </div>
 
     <div class="fieldset ">
-        <div id="mbajax-updater" style="display:none;"><h3><?php echo $this->__('Please wait while MageBridge is being installed'); ?></h3></div>
+        <div id="mbajax-updater" style="display:none;"><h3><?php echo $this->__('Please wait while MageBridge is being upgraded'); ?></h3></div>
         <div id="mbajax-table">
         <table cellspacing="5" class="form-list">
-            <!--<tr>
+            <tr>
                 <td width="150"><?php echo $this->__('Current version'); ?></td>
                 <td><?php echo $this->getCurrentVersion(); ?></td>
-            </tr>-->
+            </tr>
             <tr>
-                <?php $newversion = $this->getNewVersion(); if(preg_match('/^ERROR/', $newversion)) { ?>
-                <td colspan="2" id="mbajax-version"><?php echo $newversion; ?></td>
-                <?php } else { ?>
-                <td><?php echo $this->__('Full version'); ?></td>
-                <td><span id="mbajax-version"><?php echo $newversion; ?></span></td>
-                <?php } ?>
+                <td><?php echo $this->__('New version'); ?></td>
+                <td><span id="mbajax-version"><?php echo $this->getNewVersion(); ?></span></td>
             </tr>
         </table>
         </div>
     </div>
 </div>
 
-<?php if($this->upgradeNeeded() == true) { ?> 
-<button type="button" class="scalable" onclick="doUpdate();"><span><?php echo $this->__('Install'); ?></span></button>
-<?php } else { ?>
-<?php echo $this->__('No update needed'); ?>
-<?php } ?>
 
 </div>
 </div>

@@ -21,11 +21,19 @@ class Jira_MageBridge_Block_License extends Mage_Core_Block_Template
     }
 
     /*
+     * Helper method to get data from the Magento configuration
+     */
+    public function getLicenseKey()
+    {
+        return Mage::helper('magebridge')->getLicenseKey();
+    }
+
+    /*
      * Helper to return the header of this page
      */
     public function getHeader($title = null)
     {
-        return 'MageBridge Installer - '.$this->__($title);
+        return 'MageBridge - '.$this->__($title);
     }
 
     /*
@@ -34,5 +42,10 @@ class Jira_MageBridge_Block_License extends Mage_Core_Block_Template
     public function getMenu()
     {
         return $this->getLayout()->createBlock('magebridge/menu')->toHtml();
+    }
+
+    public function getSaveUrl()
+    {
+        return Mage::getModel('adminhtml/url')->getUrl('magebridge/index/save');
     }
 }

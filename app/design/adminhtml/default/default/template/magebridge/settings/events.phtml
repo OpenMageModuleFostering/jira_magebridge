@@ -1,0 +1,36 @@
+<?php
+/**
+ * Magento Bridge
+ *
+ * @author Yireo
+ * @package Magento Bridge
+ * @copyright Copyright 2009
+ * @license Yireo EULA (www.yireo.com)
+ * @link http://www.yireo.com
+ */
+?>
+
+<div class="fieldset ">
+
+    <table cellspacing="5" class="form-list">
+    <tbody>
+        <?php foreach($this->getEvents() as $event) { ?>
+        <tr>
+            <td width="300"><label for="license_key"><?php echo $event['name']; ?></label></td>
+            <td>
+                <select name="event_forwarding[<?php echo $event['name']; ?>]" id="<?php echo $event['name']; ?>">
+                    <?php if($event['value'] == 1) { ?>
+                    <option value="0"><?php echo $this->__('Disabled'); ?></option>
+                    <option value="1" selected><?php echo $this->__('Enabled'); ?></option>
+                    <?php } else { ?>
+                    <option value="0" selected><?php echo $this->__('Disabled'); ?></option>
+                    <option value="1"><?php echo $this->__('Enabled'); ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+    </table>
+
+</div>

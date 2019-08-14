@@ -45,7 +45,7 @@ class Jira_MageBridge_Block_Updates extends Mage_Core_Block_Template
      */
     public function getHeader($title = null)
     {
-        return 'MageBridge Installer - '.$this->__($title);
+        return 'MageBridge - '.$this->__($title);
     }
 
     /*

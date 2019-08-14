@@ -3,10 +3,9 @@
 /**
  * MageBridge-module for Magento 
  *
- * @category    design_default
  * @package     Jira_MageBridge
- * @author      Jisse Reitsma (Jira ICT)
- * @copyright   Copyright (c) 2009 Jira ICT (http://www.jira.nl/)
+ * @author      Yireo (https://www.yireo.com/)
+ * @copyright   Copyright (c) 2009 Yireo (https://www.yireo.com/)
  * @license     Open Software License
  */
 -->
@@ -15,6 +14,9 @@
         <Jira_MageBridge>
             <active>true</active>
             <codePool>community</codePool>
+            <depends>
+                <Mage_Api />
+            </depends>
         </Jira_MageBridge>
     </modules>
 </config>

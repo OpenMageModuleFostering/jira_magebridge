@@ -21,47 +21,11 @@ class Jira_MageBridge_Block_Settings extends Mage_Core_Block_Template
     }
 
     /*
-     * Helper method to get data from the Magento configuration
-     */
-    public function getSetting($key = '')
-    {
-        static $data;
-        if(empty($data)) {
-            $data = array(
-                'license_key' => Mage::helper('magebridge')->getLicenseKey(),
-                'enabled' => Mage::helper('magebridge')->enabled(),
-            );
-        }
-
-        if(isset($data[$key])) {
-            return $data[$key];
-        } else {
-            return null;
-        }
-    }
-
-    /*
-     * Helper method to get list of all the forwarded events and their current status
-     */
-    public function getEvents()
-    {
-        $events = Mage::getModel('magebridge/listener')->getEvents();
-        $event_list = array();
-        foreach($events as $event) {
-            $event_list[] = array(
-                'name' => $event,
-                'value' => (int)Mage::getModel('magebridge/listener')->isEnabled($event),
-            );
-        }
-        return $event_list;
-    }
-
-    /*
      * Helper to return the header of this page
      */
     public function getHeader($title = null)
     {
-        return 'MageBridge Installer - '.$this->__($title);
+        return 'MageBridge - '.$this->__($title);
     }
 
     /*
@@ -72,8 +36,75 @@ class Jira_MageBridge_Block_Settings extends Mage_Core_Block_Template
         return $this->getLayout()->createBlock('magebridge/menu')->toHtml();
     }
 
+    /*
+     * Helper to return the save URL
+     */
     public function getSaveUrl()
     {
         return Mage::getModel('adminhtml/url')->getUrl('magebridge/index/save');
+    }
+
+    /*
+     * Helper to reset some MageBridge values to their recommended value
+     */
+    public function getRecommendedUrl()
+    {
+        return Mage::getModel('adminhtml/url')->getUrl('magebridge/index/recommended');
+    }
+
+    /*
+     * Helper to reset some MageBridge values to null
+     */
+    public function getResetUrl()
+    {
+        return Mage::getModel('adminhtml/url')->getUrl('magebridge/index/reset');
+    }
+
+    /**
+     * Render block HTML
+     */
+    protected function _toHtml()
+    {
+        $accordion = $this->getLayout()->createBlock('adminhtml/widget_accordion')->setId('magebridge');
+
+        $accordion->addItem('joomla', array(
+            'title'   => Mage::helper('adminhtml')->__('Joomla! Connection'),
+            'content' => $this->getLayout()->createBlock('magebridge/settings_joomla')->toHtml(),
+            'open'    => true,
+        ));
+
+        $accordion->addItem('events', array(
+            'title'   => Mage::helper('adminhtml')->__('Event Forwarding'),
+            'content' => $this->getLayout()->createBlock('magebridge/settings_events')->toHtml(),
+            'open'    => false,
+        ));
+
+        $accordion->addItem('other', array(
+            'title'   => Mage::helper('adminhtml')->__('Other Settings'),
+            'content' => $this->getLayout()->createBlock('magebridge/settings_other')->toHtml(),
+            'open'    => false,
+        ));
+
+        $this->setChild('accordion', $accordion);
+
+        $this->setChild('recommended_button',
+            $this->getLayout()->createBlock('adminhtml/widget_button')
+                ->setData(array(
+                    'label' => Mage::helper('catalog')->__('Reset to recommended'),
+                    'onclick' => 'magebridgeForm.submit(\''.$this->getRecommendedUrl().'\')',
+                    'class' => 'delete'
+                ))
+        );
+
+        $this->setChild('reset_button',
+            $this->getLayout()->createBlock('adminhtml/widget_button')
+                ->setData(array(
+                    'label' => Mage::helper('catalog')->__('Reset to default'),
+                    'onclick' => 'magebridgeForm.submit(\''.$this->getResetUrl().'\')',
+                    'class' => 'delete'
+                ))
+        );
+
+        return parent::_toHtml();
     }
 }

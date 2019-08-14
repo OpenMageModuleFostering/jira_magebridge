@@ -1,0 +1,37 @@
+<?php
+/**
+ * Magento Bridge
+ *
+ * @author Yireo
+ * @package Magento Bridge
+ * @copyright Copyright 2009
+ * @license Yireo EULA (www.yireo.com)
+ * @link http://www.yireo.com
+ */
+?>
+
+<div class="fieldset ">
+
+    <table cellspacing="5" class="form-list">
+    <tbody>
+        <tr>
+            <td width="300"><label for="bridge_all"><?php echo $this->__('Bridge all HTTP-content'); ?></label></td>
+            <td>
+                <select name="bridge_all" id="bridge_all">
+                <?php 
+                $options = array(
+                    0 => 'No',
+                    1 => 'Yes',
+                );
+                foreach( $options as $value => $label) {
+                    $selected = ($value == $this->getBridgeAll()) ? 'selected' : '';
+                    echo '<option value="'.$value.'" '.$selected.'>'.$label.'</option>';
+                }
+                ?>
+                </select>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+
+</div>

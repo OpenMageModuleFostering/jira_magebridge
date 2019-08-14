@@ -14,7 +14,7 @@
 
     <modules>
         <Jira_MageBridge>
-            <version>1.0.2</version>
+            <version>1.2.1154</version>
         </Jira_MageBridge>
     </modules>
 
@@ -24,6 +24,11 @@
             <magebridge>
                 <class>Jira_MageBridge_Block</class>
             </magebridge>
+            <page>
+                <rewrite>
+                    <html_breadcrumbs>Jira_MageBridge_Model_Breadcrumbs</html_breadcrumbs>
+                </rewrite>
+            </page>
         </blocks>
 
         <helpers>
@@ -33,10 +38,201 @@
         </helpers>
 
         <models>
+            <!-- Default MageBridge classes -->
             <magebridge>
                 <class>Jira_MageBridge_Model</class>
             </magebridge>
+
+            <!-- Override of Mage_Core classes -->
+            <core>
+                <rewrite>
+                    <email_template_filter>Jira_MageBridge_Model_Email_Template_Filter</email_template_filter>
+                </rewrite>
+            </core>
         </models>
+
+		<events>
+			<address_save_after>
+				<observers>
+					<magebridge_address_save_after>
+						<type>singleton</type>
+						<class>Jira_MageBridge_Model_Listener</class>
+						<method>addressSaveAfter</method>
+					</magebridge_address_save_after>
+				</observers>
+			</address_save_after>
+			<admin_session_user_login_success>
+				<observers>
+					<magebridge_admin_session_user_login_success>
+						<type>singleton</type>
+						<class>Jira_MageBridge_Model_Listener</class>
+						<method>adminSessionUserLoginSuccess</method>
+					</magebridge_admin_session_user_login_success>
+				</observers>
+			</admin_session_user_login_success>
+            <adminhtml_customer_save_after>
+                <observers>
+                    <magebridge_adminhtml_customer_save_after>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>adminhtmlCustomerSaveAfter</method>
+                    </magebridge_adminhtml_customer_save_after>
+                </observers>
+            </adminhtml_customer_save_after>
+            <adminhtml_customer_delete_after>
+                <observers>
+                    <magebridge_adminhtml_customer_delete_after>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>adminhtmlCustomerDeleteAfter</method>
+                    </magebridge_adminhtml_customer_delete_after>
+                </observers>
+            </adminhtml_customer_delete_after>
+            <catalog_product_save_after>
+                <observers>
+                    <magebridge_catalog_product_save_after>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>catalogProductSaveAfter</method>
+                    </magebridge_catalog_product_save_after>
+                </observers>
+            </catalog_product_save_after>
+            <catalog_product_delete_after>
+                <observers>
+                    <magebridge_catalog_product_delete_after>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>catalogProductDeleteAfter</method>
+                    </magebridge_catalog_product_delete_after>
+                </observers>
+            </catalog_product_delete_after>
+            <catalog_category_save_after>
+                <observers>
+                    <magebridge_catalog_category_save_after>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>catalogCategorySaveAfter</method>
+                    </magebridge_catalog_category_save_after>
+                </observers>
+            </catalog_category_save_after>
+            <catalog_category_delete_after>
+                <observers>
+                    <magebridge_catalog_category_delete_after>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>catalogCategoryDeleteAfter</method>
+                    </magebridge_catalog_category_delete_after>
+                </observers>
+            </catalog_category_delete_after>
+            <catalog_product_status_update>
+                <observers>
+                    <magebridge_catalog_product_status_update>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>catalogProductStatusUpdate</method>
+                    </magebridge_catalog_product_status_update>
+                </observers>
+            </catalog_product_status_update>
+            <checkout_cart_add_product_complete>
+                <observers>
+                    <magebridge_checkout_cart_add_product_complete>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>checkoutCartAddProductComplete</method>
+                    </magebridge_checkout_cart_add_product_complete>
+                </observers>
+            </checkout_cart_add_product_complete>
+            <checkout_controller_onepage_save_shipping_method>
+                <observers>
+                    <magebridge_checkout_controller_onepage_save_shipping_method>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>checkoutControllerOnepageSaveShippingMethod</method>
+                    </magebridge_checkout_controller_onepage_save_shipping_method>
+                </observers>
+            </checkout_controller_onepage_save_shipping_method>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <magebridge_checkout_onepage_controller_success_action>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>checkoutOnepageControllerSuccessAction</method>
+                    </magebridge_checkout_onepage_controller_success_action>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <checkout_type_onepage_save_order_after>
+                <observers>
+                    <magebridge_checkout_type_onepage_save_order_after>
+                        <type>singleton</type>
+                        <class>Jira_MageBridge_Model_Listener</class>
+                        <method>checkoutTypeOnepageSaveOrderAfter</method>
+                    </magebridge_checkout_type_onepage_save_order_after>
+                </observers>
+            </checkout_type_onepage_save_order_after>
+			<customer_login>
+				<observers>
+					<magebridge_customer_login>
+						<type>singleton</type>
+						<class>Jira_MageBridge_Model_Listener</class>
+						<method>customerLogin</method>
+					</magebridge_customer_login>
+				</observers>
+			</customer_login>
+			<customer_logout>
+				<observers>
+					<magebridge_customer_logout>
+						<type>singleton</type>
+						<class>Jira_MageBridge_Model_Listener</class>
+						<method>customerLogout</method>
+					</magebridge_customer_logout>
+				</observers>
+			</customer_logout>
+			<customer_save_after>
+				<observers>
+					<magebridge_customer_save_after>
+						<type>singleton</type>
+						<class>Jira_MageBridge_Model_Listener</class>
+						<method>customerSaveAfter</method>
+					</magebridge_customer_save_after>
+				</observers>
+			</customer_save_after>
+			<customer_delete_after>
+				<observers>
+					<magebridge_customer_delete_after>
+						<type>singleton</type>
+						<class>Jira_MageBridge_Model_Listener</class>
+						<method>customerDeleteAfter</method>
+					</magebridge_customer_delete_after>
+				</observers>
+			</customer_delete_after>
+			<sales_convert_order_to_quote>
+				<observers>
+					<magebridge_sales_convert_order_to_quote>
+						<type>singleton</type>
+						<class>Jira_MageBridge_Model_Listener</class>
+						<method>salesConvertOrderToQuote</method>
+					</magebridge_sales_convert_order_to_quote>
+				</observers>
+			</sales_convert_order_to_quote>
+			<sales_order_place_after>
+				<observers>
+					<magebridge_sales_order_place_after>
+						<type>singleton</type>
+						<class>Jira_MageBridge_Model_Listener</class>
+						<method>salesOrderPlaceAfter</method>
+					</magebridge_sales_order_place_after>
+				</observers>
+			</sales_order_place_after>
+			<sales_order_save_after>
+				<observers>
+					<magebridge_sales_order_save_after>
+						<type>singleton</type>
+						<class>Jira_MageBridge_Model_Listener</class>
+						<method>salesOrderSaveAfter</method>
+					</magebridge_sales_order_save_after>
+				</observers>
+			</sales_order_save_after>
+		</events>
 
 	</global>
 
@@ -66,7 +262,7 @@
              <cms>
                 <children>
                     <magebridge translate="title" module="magebridge">
-                        <title>MageBridge Installer</title>
+                        <title>MageBridge settings</title>
                         <action>magebridge/index</action>
                     </magebridge>
                 </children>
@@ -92,5 +288,19 @@
             </resources>
         </acl>
     </adminhtml>
+
+    <!--
+    <frontend>
+        <routers>
+            <magebridge>
+                <use>standard</use>
+                <args>
+                    <module>Jira_MageBridge</module>
+                    <frontName>magebridge</frontName>
+                </args>
+            </magebridge>
+        </routers>
+    </frontend>
+    -->
 
 </config>

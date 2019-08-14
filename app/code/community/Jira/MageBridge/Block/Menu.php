@@ -25,19 +25,19 @@ class Jira_MageBridge_Block_Menu extends Mage_Core_Block_Template
      */
     public function getMenuItems()
     {
-
+        // Build the list of menu-items
         $items = array(
             array(
-                'action' => 'index',
+                'action' => 'settings',
                 'title' => 'Settings',
             ),
             array(
                 'action' => 'updates',
-                'title' => 'Installation',
+                'title' => 'Updates',
             ),
             array(
                 'action' => 'license',
-                'title' => 'License Agreement',
+                'title' => 'Licensing',
             ),
         );
 

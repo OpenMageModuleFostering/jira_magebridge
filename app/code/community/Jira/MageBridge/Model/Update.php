@@ -41,7 +41,8 @@ class Jira_MageBridge_Model_Update extends Mage_Core_Model_Abstract
 
     public function upgradeNeeded()
     {
-        if((int)$this->getNewVersion() > (int)$this->getCurrentVersion()) {
+        // @todo: This doesn't work if version 111 is higher than 92
+        if($this->getNewVersion() > $this->getCurrentVersion()) {
             return true;
         }
         return true;
@@ -63,7 +64,7 @@ class Jira_MageBridge_Model_Update extends Mage_Core_Model_Abstract
             require_once 'Maged/Pear.php';
 
         } catch(Exception $e) {
-            return 'ERROR: Failed to prepare PEAR: '.$e->getMessage();
+            return 'Failed to prepare PEAR: '.$e->getMessage();
         }
 
         $pear = new Maged_Pear();
@@ -74,7 +75,7 @@ class Jira_MageBridge_Model_Update extends Mage_Core_Model_Abstract
         );
 
         if(is_dir(dirname(__FILE__).DS.'.svn')) {
-            return 'ERROR: Updating Subversion environments is not allowed';
+            return 'Updating Subversion environments is not allowed';
         }
 
         try {
@@ -87,15 +88,15 @@ class Jira_MageBridge_Model_Update extends Mage_Core_Model_Abstract
                 // Reset the configuration cache
                 Mage::getConfig()->removeCache();
 
-                return 'ERROR: PEAR result: '.(string)$result;
+                return 'PEAR result: '.(string)$result;
             } else {
-                return 'ERROR: Maged_Model_Pear_Request failed';
+                return 'Maged_Model_Pear_Request failed';
             }
         } catch(Exception $e) {
-            return 'ERROR: Failed to initialize PEAR: '.$e->getMessage();
+            return 'Failed to initialize PEAR: '.$e->getMessage();
         }
 
-        return 'ERROR: Upgrade failed by unknown error';
+        return 'Upgrade failed by unknown error';
     }
 
     public function getCurrentVersion()
@@ -112,17 +113,12 @@ class Jira_MageBridge_Model_Update extends Mage_Core_Model_Abstract
         if(empty($this->_new_version)) {
             $arguments = array('resource' => 'versions', 'request' => 'downloads/magebridge');
             $url = $this->getApiLink($arguments);
-            $this->_data = trim($this->_getRemote($url));
-            if(preg_match('/^Restricted access/', $this->_data)) {
-                return 'ERROR: Restricted access. Is your licensing correct?';
-            } elseif(empty($this->_data)) { 
-                return 'ERROR: Empty reply. Is CURL enabled?';
-            }
-
+            $this->_data = $this->_getRemote($url);
             try {
                 $doc = new SimpleXMLElement($this->_data);
             } catch(Exception $e) {
-                return 'ERROR: Update check failed. Is your licensing correct?';
+                return 'Update check failed. Is your licensing correct?';
+                //return 'XML-parsing failed in data: '.$this->_data.' :'.$e->getMessage();
             }
             $this->_new_version = (string)$doc->magento;
         }

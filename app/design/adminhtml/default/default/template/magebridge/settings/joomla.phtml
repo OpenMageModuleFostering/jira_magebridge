@@ -1,0 +1,38 @@
+<?php
+/**
+ * Magento Bridge
+ *
+ * @author Yireo
+ * @package Magento Bridge
+ * @copyright Copyright 2009
+ * @license Yireo EULA (www.yireo.com)
+ * @link http://www.yireo.com
+ */
+?>
+
+<div class="fieldset ">
+
+    <table cellspacing="5" class="form-list">
+    <tbody>
+        <tr>
+            <td width="300"><label for="xmlrpc_url"><?php echo $this->__('XML-RPC host'); ?></label></td>
+            <td>
+                <input type="text" name="xmlrpc_url" value="<?php echo $this->getXmlrpcUrl(); ?>" size="40" disabled />
+            </td>
+        </tr>
+        <tr>
+            <td width="300"><label for="api_user"><?php echo $this->__('API-user'); ?></label></td>
+            <td>
+                <input type="text" name="api_user" value="<?php echo $this->getApiUser(); ?>" size="40" disabled />
+            </td>
+        </tr>
+        <tr>
+            <td width="300"><label for="api_key"><?php echo $this->__('API-key'); ?></label></td>
+            <td>
+                <input type="password" name="api_key" value="<?php echo $this->getApiKey(); ?>" size="40" disabled />
+            </td>
+        </tr>
+    </tbody>
+    </table>
+
+</div>

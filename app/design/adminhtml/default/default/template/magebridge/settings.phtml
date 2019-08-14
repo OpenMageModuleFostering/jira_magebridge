@@ -10,7 +10,7 @@
  */
 ?>
 
-<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="magebridge_edit_form">
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="magebridge_edit_form" autocomplete="off">
 <div class="columns ">
 
 <div class="side-col" id="page:left">
@@ -23,9 +23,11 @@
 <div class="content-header">
 <table cellspacing="0">
 	<tr>
-		<td style="width:80%;"><h3 class="icon-head head-tag"><?php echo $this->getHeader('Settings'); ?></h3></td>
-        <td class="formbuttons">
+		<td style="width:50%;"><h3 class="icon-head head-tag"><?php echo $this->getHeader('Settings'); ?></h3></td>
+        <td class="formbuttons" align="right">
             <?php echo $this->getSaveButtonHtml(); ?>
+            <?php echo $this->getChildHtml('reset_button'); ?>
+            <?php echo $this->getChildHtml('recommended_button'); ?>
             <button type="button" class="scalable" onclick="doSubmit();"><span><?php echo $this->__('Save'); ?></span></button>
         </td>
 	</tr>
@@ -33,25 +35,7 @@
 </div>
 
 <div class="entry-edit">
-
-    <div class="entry-edit-head">
-        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('General'); ?></h4>
-    </div>
-
-    <div class="fieldset ">
-
-        <table cellspacing="5" class="form-list">
-        <tbody>
-            <tr>
-                <td width="300"><label for="license_key"><?php echo $this->__('License key'); ?></label></td>
-                <td><input type="text" class="input-text" size="40" name="license_key" id="license_key" value="<?php echo $this->getSetting('license_key'); ?>" /></td>
-            </tr>
-        </tbody>
-        </table>
-
-    </div>
-</div>
-
+<?php echo $this->getChildHtml('accordion') ?>
 </div>
 </div>
 

@@ -12,6 +12,7 @@
 -->
 <config>
     <sections>
+        <!--
         <magebridge translate="label" module="magebridge">
             <label>Jira MageBridge</label>
             <tab>service</tab>
@@ -42,5 +43,6 @@
                 </settings>
             </groups>
         </magebridge>
+        -->
     </sections>
 </config>
