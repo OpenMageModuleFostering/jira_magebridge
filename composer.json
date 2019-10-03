@@ -1,5 +1,5 @@
 {
-    "name": "OpenMageModuleFostering\/Jira_MageBridge",
+    "name": "openmage-module-fostering\/jira_magebridge",
     "type": "magento-module",
     "license": "MageBridge-EULA",
     "homepage": "",
